@@ -39,3 +39,25 @@ models:
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+  - name: stg_payments
+    description: This model cleans up payment data by XW
+    columns:
+      - name: id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['fail', 'success']
+      - name: ORDERID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: id
+  - name: customers_orders_payments
+    description: This model cleans up payment data by XW
+  - name: payments
+    description: This model cleans up payment data by XW
