@@ -3,7 +3,7 @@ version: 2
 sources:
     - name: xw_shop
       description: This is a replica of the Postgres database used by our app
-      database: raw
+      database: "{{ env_var('DBT_SRC_DATABASE') }}"
       schema: xw_shop
       tables:
           - name: customers
@@ -14,8 +14,8 @@ sources:
           #   description: One record per payment. Stripe payment.
     - name: gp_tran
       description: This is a replica of the Postgres database used by our app
-      database: raw
+      database: "{{ env_var('DBT_SRC_DATABASE') }}"
       schema: gp_tran
       tables:
           - name: payment
-            description: One record per payment. Stripe payment.
+            description: One record per payment. GP payment.
