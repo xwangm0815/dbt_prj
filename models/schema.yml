@@ -56,7 +56,7 @@ models:
           - not_null
           - relationships:
               to: ref('stg_orders')
-              field: id
+              field: ORDER_ID
   - name: customers_orders_payments
     description: This model cleans up payment data by XW
   - name: payments
