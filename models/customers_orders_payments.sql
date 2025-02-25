@@ -6,7 +6,7 @@ with
     payments as (select * from {{ ref("stg_payments") }} p),
     final as (
 
-        select
+        select c.customer_id,
             first_name,
             last_name,
             orderid,
