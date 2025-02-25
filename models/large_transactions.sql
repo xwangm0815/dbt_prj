@@ -1,17 +1,8 @@
-with cop as (
+{% set amount_threshold = 2000 %} 
 
-    select * from {{ ref('customers_orders_payments') }}
+with
+    cop as (select * from {{ ref("customers_orders_payments") }}),
+    final as (select * from cop where amount >= {{ amount_threshold }})
 
-),
-final as (
-
-    select
-       *
-
-    from cop
-
-    where AMOUNT >= 1000
-
-)
-
-select * from final
+select *
+from final
